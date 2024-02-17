@@ -1,0 +1,244 @@
+@import "./resets";
+@import "./variables";
+
+@function weight($weight-name){
+    @return map-get($font-weights, $weight-name );
+}
+
+@mixin flexCenter($direction){
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: $direction;
+}
+
+body{
+    @include flexCenter(row);
+    background: $color-primary;
+    color: $text-color;
+    font-family:$font-main;
+}
+
+.document {
+    margin: 10px;
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+    min-height: 1000px;
+    background: $color-document-primary;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+     box-shadow: $shadow;
+
+    .style-div{
+        width: 62.5%;
+        height: 20px;
+        background: $color-document-secondary;
+        position: absolute;
+        right: 0;
+        bottom: 0;
+}
+    .left-side{
+        padding: 40px;
+        position: relative;
+        background: $color-document-primary;
+        .style-div1{
+            width: 30%;
+            height: 250px;
+            background: $color-document-secondary;
+            position: absolute;
+            left: 0;
+            top: 0;
+    }
+        .contact-info{
+            padding-top: 10px;
+            .title{
+                padding-bottom: 5px;
+                letter-spacing: 4px;
+                border-bottom: 2px solid $color-document-secondary;
+                margin-bottom: 20px;
+            }
+            ul{
+                position: relative;
+                li{
+                    list-style: none;
+                    position: relative;
+                    margin: 10px 0;
+                    cursor: pointer;
+                    .contact-icon {
+                        display: inline-block;
+                        width: 30px;
+                        font-size: 18px;
+                        color: $icon-color-primary;
+                    }
+                    .text{
+                        color: $text-light;
+                    }
+                }
+            }
+        }
+        .skills{
+            padding-top: 20px;
+            h3{
+                padding-bottom: 5px;
+                letter-spacing: 4px;
+                border-bottom: 2px solid $color-document-secondary;
+                margin-bottom: 20px;
+            }
+            ul{
+                position: relative;
+                li{
+                    list-style:inside;
+                    position: relative  ;
+                    margin: 10px 0;
+                    cursor: pointer;
+                    .text{
+                        color: $text-light;
+                    }
+                }
+            }
+        }
+    }
+    .right-side{
+        padding: 40px;
+        position: relative;
+        background: $color-document-primary;
+        .about{
+            margin-bottom: 50px;
+            .title2{
+                letter-spacing: 2px;
+                padding-bottom: 10px;
+                border-bottom: 2px solid $color-document-secondary;
+            }
+            p{
+                margin-top: 20px;
+            }
+        }
+        .experience{
+            margin-bottom: 20px;
+            .title2{
+                letter-spacing: 2px;
+                padding-bottom: 10px;
+                border-bottom: 2px solid $color-document-secondary;
+            }
+           .experience-1{
+            .date{
+                margin-top: 10px;
+                font-size: 15px;
+               }
+               .role{
+                font-weight: weight(bold);
+                font-size: 17px;
+                margin: 5px 0px;
+               }
+                p{
+                    margin-top: 12px;
+                }
+           }
+           .experience-2{
+            @extend .experience-1;
+            margin-top: 30px;
+           }
+           .experience-3{
+            @extend .experience-1;
+            margin-top: 30px;
+           }
+        }
+        .education{
+            margin-bottom: 20px;
+            .title2{
+                letter-spacing: 2px;
+                padding-bottom: 10px;
+                border-bottom: 2px solid $color-document-secondary;
+            }
+            .education-1{
+                .date{
+                    margin-top: 10px;
+                    font-size: 15px;
+                   }
+                   .degree{
+                    font-weight: weight(bold);
+                    font-size: 17px;
+                    margin: 3px 0px;
+                   }
+                    .institute{
+                        margin-top: 10px;
+                    font-weight: weight(bold);
+
+                    }
+            }
+            .education-2{
+                @extend .education-1;
+                margin-top: 20px;
+            }
+            .education-3{
+                @extend .education-1;
+                margin-top: 20px;
+            }
+        }
+      
+    }
+    .profile-text{
+        position: relative;
+        @include flexCenter(column);
+        align-items: flex-start;
+        padding-bottom: 20px;
+        .imgBox{
+            width: 100%;
+            padding-bottom: 20px;
+            img{
+                width: 100%;
+                height: auto;
+                overflow: hidden;
+            }
+        }
+        h5{
+            margin: 0px;
+           font-size: 18px;
+            color: $text-color;
+        }
+        h1{
+            margin-left: -3px;
+            color: $color-document-secondary;
+            font-size: 3em;
+        }
+        small{
+            letter-spacing: 1px;
+            color: $text-light;
+            font-size: 12px;
+        }
+        
+      }
+}
+
+
+
+//extras
+// @mixin theme($light-theme: false) {
+//     @if $light-theme {
+//         background-color: lighten($color-primary, 100%);
+//         color: darken($text-color, 100%);
+//     }
+// }
+
+// @mixin mobile {
+//     @media (max-width : $mobile) {
+//         @content;
+//     }
+// }
+
+// .light {
+//     @include theme($light-theme: false)
+// }
+ // #{&}_paragraph1 {
+    //     font-weight: weight(bold);
+    //     &:hover {
+    //         color: red;
+    //     }
+    // }
+    // #{&}_paragraph2 {
+    //     @extend .main_paragraph1;
+    // }
+    // @include mobile {
+    //     flex-direction: column;
+    // }
